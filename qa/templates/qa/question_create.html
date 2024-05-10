@@ -1,0 +1,26 @@
+{% extends 'E:\PROJECTS\Project Main\templates\registration\base.html' %}
+
+
+{% block content %}
+<div class="container mt-5">  <!-- Bootstrap container with margin-top for spacing -->
+    <div class="row">  <!-- Bootstrap grid system -->
+        <div class="col-md-8 offset-md-2">  <!-- Centered column -->
+            <h1>Create a New Question</h1>  <!-- Page title -->
+
+            <form method="post">  <!-- Form for creating a new question -->
+                {% csrf_token %}  <!-- CSRF protection -->
+                <div class="form-group">  <!-- Bootstrap form group -->
+                    <label for="title">Title</label>  <!-- Question title label -->
+                    <input type="text" class="form-control" id="title" name="title" required>  <!-- Question title input -->
+                </div>
+                <div class="form-group">  <!-- Bootstrap form group -->
+                    <label for="content">Content</label>  <!-- Question content label -->
+                    <textarea class="form-control" id="content" name="content" rows="6" required></textarea>  <!-- Question content input -->
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>  <!-- Submit button -->
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

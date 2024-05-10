@@ -1,0 +1,31 @@
+
+{% extends 'E:\PROJECTS\Project Main\templates\registration\base.html' %}
+
+{% block content %}
+
+<div class="container mt-5">  <!-- Bootstrap container with margin-top for spacing -->
+    <div class="row">  <!-- Bootstrap grid system -->
+        <div class="col-md-8 offset-md-2">  <!-- Centered column -->
+            <h1 class="mb-4">All Questions</h1>  <!-- Page title with bottom margin -->
+            
+            {% if questions %}  <!-- Check if there are questions to display -->
+            <ul class="list-group">  <!-- Bootstrap list group -->
+                {% for question in questions %}  <!-- Iterate through the questions -->
+                <li class="list-group-item">  <!-- Each question as a list item -->
+                    <a href="{% url 'question_detail' question.id %}" class="text-decoration-none">  <!-- Link to question details -->
+                        <h5>{{ question.title }}</h5>  <!-- Display question title -->
+                    </a>
+                    <small>Asked by {{ question.author.username }} on {{ question.created_at }}</small>  <!-- Display author and date -->
+                    <p class="mb-1">{{ question.content|truncatewords:30 }}</p>  <!-- Display part of the content -->
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>No questions have been asked yet.</p>  <!-- Message when there are no questions -->
+            {% endif %}
+
+            <a href="{% url 'question_create' %}" class="btn btn-primary mt-4">Ask a Question</a>  <!-- Button to ask a new question -->
+        </div>
+    </div>
+</div>
+{% endblock %}

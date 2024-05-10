@@ -1,0 +1,52 @@
+{% extends 'registration/base.html' %}
+
+{% block content %}
+<div class="container mt-5">  <!-- Bootstrap container with margin-top -->
+    <div class="row">  <!-- Bootstrap grid system -->
+        <div class="col-md-8 offset-md-2">  <!-- Centered column -->
+            <div class="card">  <!-- Bootstrap card component -->
+                <div class="card-body">
+                    <h2 class="card-title">User Profile</h2>  <!-- Bootstrap card title -->
+                    <p><strong>Username:</strong> {{ user.username }}</p>
+                    <p><strong>Email:</strong> {{ user.email }}</p>
+                    {% csrf_token %}
+                    <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>  <!-- Bootstrap button -->
+                    <a href="{% url 'user_question_list' user.id %}" class="btn btn-primary">My Questions</a>  <!-- Primary button -->
+
+                      <a href="{% url 'question_create' %}" class="btn btn-primary">
+                        Ask a Question  <!-- This button redirects to the ask a question section -->
+                      </a>
+
+                      <a href="{% url 'question_list' %}" class="btn btn-primary">
+                        View All Questions  <!-- This button redirects to the question list -->
+                      </a>
+
+
+                      {% for question in user.questions.all %}  <!-- Assuming a reverse relation on the User model -->
+                      <li>
+                        <a href="{% url 'question_detail' question.id %}">{{ question.title }}</a>  <!-- Link to question detail -->
+                        <!-- Button to delete the question -->
+                        <a href="{% url 'delete_question' question.id %}" onclick="return confirm('Are you sure you want to delete this question?');">
+                          <button class="btn btn-danger">Delete</button>  <!-- Confirmation to avoid accidental deletion -->
+                        </a>
+                      </li>
+                      {% endfor %}
+
+
+                      {% if questions %}
+                      <h3>Questions</h3>
+                        <ul>
+                          {% for question in questions %}
+                            <li><a href="{% url 'question_detail' question.id %}">{{ question.title }}</a></li>  <!-- Link to the question details -->
+                          {% endfor %}
+                        </ul>
+                      {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+

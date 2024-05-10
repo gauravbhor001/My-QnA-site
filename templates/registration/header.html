@@ -1,0 +1,42 @@
+{% extends 'registration/base.html' %}
+
+<div class="container mt-5">  <!-- Bootstrap container with margin-top for spacing -->
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">  <!-- Bootstrap carousel -->
+        <ol class="carousel-indicators">  <!-- Indicators for the carousel -->
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">  <!-- Carousel slides -->
+            <div class="carousel-item active">  <!-- First slide -->
+                <img src="{% static 'images/news1.jpg' %}" class="d-block w-100" alt="News 1">  <!-- Image with static reference -->
+                <div class="carousel-caption d-none d-md-block">  <!-- Caption for the slide -->
+                    <h5>Latest Coding News</h5>  <!-- Headline for the first slide -->
+                    <p>Stay updated with the latest developments in coding and technology.</p>  <!-- Description -->
+                </div>
+            </div>
+            <div class="carousel-item">  <!-- Second slide -->
+                <img src="{% static 'images/news2.jpg' %}" class="d-block w-100" alt="News 2">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>New Tech Gadgets</h5>
+                    <p>Discover the newest gadgets and tech tools in the market.</p>
+                </div>
+            </div>
+            <div class="carousel-item">  <!-- Third slide -->
+                <img src="{% static 'images/news3.jpg' %}" class="d-block w-100" alt="News 3">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Upcoming Events</h5>
+                    <p>Learn about upcoming coding events and workshops.</p>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">  <!-- Previous control -->
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">  <!-- Next control -->
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>

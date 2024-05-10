@@ -1,0 +1,21 @@
+.card-header {
+    background-color: #f8f9fa;  /* Light background color for card header */
+}
+
+.card-body {
+    background-color: #ffffff;  /* White background for card body */
+}
+
+.btn-primary {
+    background-color: #0056b3;  /* Custom color for primary button */
+    border: none;  /* Remove border */
+}
+
+.btn-secondary {
+    background-color: #6c757d;  /* Custom color for secondary button */
+    border: none;  /* Remove border */
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);  /* Add subtle shadow to the card */
+}

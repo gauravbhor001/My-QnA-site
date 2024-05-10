@@ -1,0 +1,34 @@
+{% extends 'E:\PROJECTS\Project Main\templates\registration\base.html' %}
+
+{% block content %}
+<div class="container mt-5">  <!-- Bootstrap container with margin-top for spacing -->
+    <div class="card">  <!-- Bootstrap card for structured content -->
+        <div class="card-body">  <!-- Card body -->
+            <h1 class="card-title">{{ question.title }}</h1>  <!-- Question title -->
+            <p class="card-text">{{ question.content }}</p>  <!-- Question content -->
+
+            <h2 class="mt-4">Answers</h2>  <!-- Section heading -->
+            {% if question.answers.all %}  <!-- Check if there are answers -->
+            <ul class="list-group">  <!-- Bootstrap list group -->
+                {% for answer in question.answers.all %}
+                <li class="list-group-item">  <!-- Each answer as a list item -->
+                    {{ answer.content }} - <strong>{{ answer.author.username }}</strong>  <!-- Answer content and author -->
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>No answers yet. Be the first to answer!</p>  <!-- Message if no answers -->
+            {% endif %}
+
+            <h2 class="mt-4">Answer this question</h2>  <!-- Heading for the answer form -->
+            <form method="post">  <!-- Form for submitting a new answer -->
+                {% csrf_token %}  <!-- CSRF protection -->
+                {{ form.as_p }}  <!-- Render form fields -->
+                <button type="submit" class="btn btn-primary mt-3">Submit</button>  <!-- Submit button with margin-top -->
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+

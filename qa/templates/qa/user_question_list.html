@@ -1,0 +1,27 @@
+{% extends 'E:\PROJECTS\Project Main\templates\registration\base.html' %}
+
+{% block content %}
+<div class="container mt-5">  <!-- Bootstrap container with margin-top for spacing -->
+    <div class="row">  <!-- Bootstrap grid system -->
+        <div class="col-md-8 offset-md-2">  <!-- Centered column -->
+            <h1>{{ user.username }}'s Questions</h1>  <!-- Display the user's name -->
+
+            {% if questions %}  <!-- Check if there are any questions -->
+            <ul class="list-group">  <!-- Bootstrap list group for displaying questions -->
+                {% for question in questions %}
+                <li class="list-group-item">  <!-- Each question as a list item -->
+                    <a href="{% url 'question_detail' question.id %}" class="text-decoration-none">  <!-- Link to question detail -->
+                        <h5>{{ question.title }}</h5>  <!-- Display the question title -->
+                    </a>
+                    <small>Asked on {{ question.created_at }}</small>  <!-- Display the creation date -->
+                    <p class="mb-1">{{ question.content|truncatewords:20 }}</p>  <!-- Display part of the content -->
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>No questions asked yet.</p>  <!-- Display a message if there are no questions -->
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

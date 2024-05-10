@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Q&A Site</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Bootstrap JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">  <!-- Custom styles if needed -->
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">  <!-- Bootstrap navigation bar -->
+        <a class="navbar-brand" href="/">My Q&A Site</a>  <!-- Home link and site name -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">  <!-- Collapsible section for small screens -->
+            <ul class="navbar-nav">  <!-- Navigation links -->
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>  <!-- Link to home page -->
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'question_create' %}">Ask a Question</a>  <!-- Link to create a question -->
+                </li>
+                {% if user.is_authenticated %}  <!-- Check if the user is logged in -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'profile' %}">Profile</a>  <!-- Link to the user's profile -->
+                </li>
+                <li class="nav-item">
+                    {% csrf_token %}
+                    <a class="nav-link" href="{% url 'logout' %}">Logout</a>  <!-- Link to log out -->
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">Login</a>  <!-- Link to log in -->
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'register' %}">Register</a>  <!-- Link to register -->
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+    {% block content %}  <!-- Content block for derived templates -->
+    {% endblock %}
+</body>
+</html>
